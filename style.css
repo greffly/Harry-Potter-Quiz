@@ -1,0 +1,61 @@
+* {
+  box-sizing:border-box;
+}
+
+html {
+  background: url("https://i.pinimg.com/originals/58/4c/19/584c19801a64c5f5f198b6c441d0cf7e.jpg") center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  align-content: center;
+}		
+		
+body {
+  font-family: "Crimson Text", Helvetica Neue;
+  //font-size: 18px;
+  color: white;
+  margin: 40px;
+}
+
+header {
+  text-align: center;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: space-evenly;
+}
+
+h2 {
+  text-align: center;
+}
+
+button {
+  width: 30%;
+  padding: 10px;
+  align-content: center;
+  background-color: white;
+  font-size: 15px;
+}
+
+footer {
+  text-align: center;
+  display: inline;
+}
+
+@media screen and (max-width: 799px) {
+  body .background-image {
+    display: flex;
+  }  
+  body {  
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body .background-image {
+    display: flex;
+  }
+  body {  
+    font-size: 30px;
+  }
+}
