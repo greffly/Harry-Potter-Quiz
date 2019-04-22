@@ -7,55 +7,158 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
+  width: 100%;
   align-content: center;
-}		
-		
-body {
   font-family: "Crimson Text", Helvetica Neue;
-  //font-size: 18px;
-  color: white;
-  margin: 40px;
-}
+  font-size: 18px;
+}	
 
 header {
-  text-align: center;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: space-evenly;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+h1 {
+  font-size: 1.8em;
 }
 
 h2 {
+  font-size: 1.2em;
+}
+		
+body {
+  color: white;
   text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.fullPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.questionPage {
+  height: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+fieldset, .questionPage {
+  padding: 10px;
+  border: none;
+}
+
+.question {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.questionPage {
+  background-color: rgba(99, 97, 97, 0.5);
+  margin: 10px;
+}
+
+.questionAnswerForm, .results, .resultsPage {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+p {
+  margin: 5px;
+}
+
+iframe.giphy {
+  width: 80%;
+  height: auto;
 }
 
 button {
-  width: 30%;
+  width: 40%;
   padding: 10px;
   align-content: center;
   background-color: white;
-  font-size: 15px;
+  font-size: .7em;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 footer {
-  text-align: center;
-  display: inline;
+  display: flex;
+  flex-direction: column;
+  //text-align: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
-@media screen and (max-width: 799px) {
-  body .background-image {
-    display: flex;
-  }  
-  body {  
-    font-size: 18px;
-  }
+@media screen and (min-width: 331px) {
+
 }
 
-@media screen and (min-width: 800px) {
-  body .background-image {
-    display: flex;
-  }
-  body {  
+@media screen and (min-width: 600px){
+  html {
     font-size: 30px;
+  }
+  .questionPage, .questionAnswerForm {
+    padding: 20px;
+  }
+  button {
+    margin: 30px;
+  }
+}
+
+@media screen and (min-width: 600px) and (orientation: landscape){
+  html {
+    font-size: 20px;
+  }
+  header {
+    margin: 20px;
+  }
+  .resultsPage header {
+    margin: 5px;
+  }
+  footer {
+    flex-direction: row;
+  }
+  button {
+    margin: 10px;
+  }
+  h1, h2 {
+    margin: 20px;
+  }
+  .questionAnswerForm {
+    padding: 0;
+  }
+  .question {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 800px){
+  html {
+    font-size: 27px;
+    height: 100%;
+  }
+  .fullPage {
+    height: 100%;
+  }
+  .questionPage, .questionAnswerForm {
+    padding: 30px;
   }
 }

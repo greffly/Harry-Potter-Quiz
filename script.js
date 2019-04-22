@@ -1,11 +1,10 @@
-function startQuiz() {
- // takes the user from the home page to the first question of the quiz
-  $('.startQuiz').on('click', function() {
+function handleStartQuiz() {
+  $('.nextQuestion').on('click', function() {
     $('header').hide();
     $('form').show();
     $('#container').show();
-    renderQuestion();
-    //handleNextQuestion();
+    $('footer').show();
+    $('.questionAnswerForm').hide();
     console.log('startQuiz is working');
   });
 }
@@ -14,140 +13,167 @@ let questionNumber = 1;
 let score = 0;
 
 function generateQuestion() {
- //this function will be responsible for creating the  question along with possible answers for the current page
+  iterateQuestion();
+  iterateScore();
+  $('.results').hide();
   return `<section class="questionPage" role="main">
     <h2 class="question">${STORE[questionNumber-1].question}</h2>
       <form role="form" accept-charset="UTF-8">
         <fieldset>
           <label>
-            <input type="radio" class="answer" name="option"/>
+            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer1}"/>
             ${STORE[questionNumber-1].answer1}<br>
           </label>
           <label>
-            <input type="radio" class="answer" name="option"/>
+            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer2}"/>
             ${STORE[questionNumber-1].answer2}<br>
           </label>
           <label>
-            <input type="radio" class="answer" name="option"/> 
+            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer3}"/> 
             ${STORE[questionNumber-1].answer3}<br>
           </label>  
           <label>
-            <input type="radio" class="answer" name="option"> 
+            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer4}"/> 
             ${STORE[questionNumber-1].answer4}<br>
           </label> 
         </fieldset>
       </form>
-      <button type="submit" class="nextPage">Submit</button>
+      <button type="submit" class="getResults">Submit</button>
       </section>
-      `;
-  
+    `;
   console.log('generateQuestion is working');  
 }
 
 function renderQuestion() {
-  $('button').on('click', function() {
-    if (questionNumber < 9) {
-      $('#container').html(generateQuestion());
-      handleNextQuestion();
-      questionNumber++;
-      console.log('renderQuestion is working');
-    }
-    else {
-      renderResults();
-    }
-  });
+  console.log("renderQuestion question number", questionNumber);
+  $('#container').html(generateQuestion());
+  $('header').hide();
+  $('form').show();
+  $('#container').show();
+  $('.questionAnswerForm').hide();
 }
 
 function handleNextQuestion() {
-  //this function will proceed to the next question and rerender the page to display the following question and possible answer set
-  //$('button').on('click', function() {
-  if (questionNumber < STORE.length) {
-    renderQuestion();  
-  }
-  else {
-    renderResults();
-  }  
+  $('.nextQuestion').on('click', function() {
+    if (questionNumber <= STORE.length) {  
+      renderQuestion();
+      questionNumber++;  
+    }
+    else {
+      renderResults();
+    }  
   console.log('handleNextQuestion is working');
-  //});
+  });
 }
 
-function handleAnswerSelected() {
- //this function will be responsible for logging the answer that the user selects
-
-  $('button').on('click', function() {
-    event.preventDefault();
+function handleAnswerSubmitted() {
+  $('#container').on('click', '.getResults', function() {
+    //event.preventDefault();
     checkUserAnswer();
+    $('.questionAnswerForm').show();
   });
 }
 
 function checkUserAnswer() {
-  let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-  let userAnswer = $('input:checked');
-  let answerText = userAnswer.val();
+  event.preventDefault();
+  //Need to fix this so there's no -2 value
+  let correctAnswer = `${STORE[questionNumber-2].correctAnswer}`;
+  let userAnswer = $("input:checked").val();
 
-  if (answerText == correctAnswer) {
-    console.log('correctAnswer selected');
+  if (userAnswer == correctAnswer) {
+    console.log("checkUserAnswer score", score);
+    correctAnswerFeedback();
   }
   else {
     console.log('incorrectAnswer selected');
+    incorrectAnswerFeedback();
   }  
 }
 
-function isAnswerCorrect() {
- //this function will see the selected answer and determine if it is correct or not 
-  if (answerText === correctAnswer) {
-    score++;
+function correctAnswerFeedback() {
+  score++;
+  iterateScore();
+  $('header').hide();
+  $('form').hide();
+  $('#container').hide();
+  $('footer').show();
+  $('.questionAnswerForm').html(`<div role="banner" class="results">
+    <iframe src="https://giphy.com/embed/DxUiFqLgDVC00" width="480" height="330" frameBorder="0" class="giphy" allowFullScreen></iframe>
+    <button type="submit" class="nextQuestion">Next Question</button>
+    </div>`);
+  if (questionNumber <= STORE.length) {  
+    handleNextQuestion(); 
   }
-  console.log('isAnswerCorrect is working');
+  else {
+    renderResults();
+  }    
 }
 
-function updateScore() {
- //this function will add 1 point to the score if the previously selected answer was correct, if not it will leave the score as is
+function incorrectAnswerFeedback() {
+  iterateScore();
+  $('header').hide();
+  $('form').hide();
+  $('#container').hide();
+  $('footer').show();
+  $('.questionAnswerForm').html(`<div role="banner" class="results">
+    <h2>Nope, The Correct Answer Is ${STORE[questionNumber-2].correctAnswer}!</h2>
+    <iframe src="https://giphy.com/embed/mqSiZYc0KxyYo" width="480" height="195" frameBorder="0" class="giphy" allowFullScreen></iframe>
+    <button type="submit" class="nextQuestion">Next Question</button>
+    </div>`);
+  if (questionNumber <= STORE.length) {  
+    handleNextQuestion(); 
+  }
+  else {
+    renderResults();
+  } 
+}
 
-  console.log('updateScore is working');
+function iterateQuestion() {
+  $('.currentQuestion').html(`<p>Question: ${questionNumber} / 10</p>`);
+}
+
+function iterateScore() {
+  $('.currentScore').html(`<p>House Points Earned: ${score}</p>`);
 }
 
 function generateResults() {
   if (score >= 8) {
-    return `<header role="banner">
+    return $('.resultsPage').html(`<header role="banner">
         <h1>You Are The Chosen One!</h1>
-        <h2>Show Score Here</h2>
+        <p><iframe src="https://giphy.com/embed/gbErpwcLlizvi" width="480" height="247" frameBorder="0" class="giphy" allowFullScreen></iframe></p>
+        <h2>You Got ${score} Out Of 10 Correct</h2>
         <button type="submit" class="restartQuiz">Restart Quiz</button>
-      </header >`
+      </header >`);
   }
   else {
-    return `<header role="banner">
-        <h1>Avada Kedavra!</h1>
-        <h2>Show Score Here</h2>
-        <button type="submit" class="restartQuiz">Restart Quiz</button>
-      </header >`
+      return $('.resultsPage').html(`<header role="banner"><h1>The Dark Lord Has Defeated You!</h1>
+      <p><iframe src="https://giphy.com/embed/JAbAmpu1TshlS" width="480" height="198" frameBorder="0" class="giphy" allowFullScreen></iframe></p>
+      <h2>You Got ${score} Out Of 10 Correct</h2>
+      <button type="submit" class="restartQuiz">Restart Quiz</button>
+      </header >`);
   }  
 }
+
 function renderResults() {
- //this function will show the user the final tally of their results at the end of the quiz
-  $('button').on('click', function() {
-  if (questionNumber === 9) {
-  $('#container').html(generateResults());
-  }
-  console.log('renderResults is working');
+  $('.nextQuestion').on('click', function() {
+    $('.results').hide(); 
+    generateResults();
+    console.log('renderResults is working');
+    restartQuiz();
   });
 }
 
 function restartQuiz() {
- //this function will look for the users' click on the restart button to restart the quiz **THIS IS NOT WORKING YET 4/16
-  $('button').on('click', '.restartQuiz', function() {
+  $('.restartQuiz').on('click', function() {
+  location.reload();
   console.log('restartQuiz is working');
   });
 }
 
 function handleQuiz() {
-  startQuiz();
-  generateQuestion();
-  //handleAnswerSelected();
-  //checkUserAnswer();
-  renderQuestion();
+  handleStartQuiz();
+  handleAnswerSubmitted();
   handleNextQuestion();
-  renderResults();
   restartQuiz();
 }
 

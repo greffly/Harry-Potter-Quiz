@@ -6,22 +6,32 @@
     <title>Harry Potter Quiz</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Julius+Sans+One|Oswald" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header role="banner">
-      <h1>Harry Potter Quiz</h1>
-      <h2>Would You Be Able To Defeat The Dark Lord?</h2>
-      <button type="submit" class="startQuiz">Wands Ready!</button>
-    </header >
-    <div class="quiz" id="container">
-      <form role="form" accept-charset="UTF-8" style="display: none;">
-        <button type="submit" class="nextPage">Submit</button>  
-      </form>
-    </div>  
-    <footer class="currentScore" style="display: none;">
-      <p>Question: <span class="questionNumber">0</span> / 10</p>
-      <p>House Points Earned: <span class="userScore">0</span></p>
-    </footer>   
+    <section class="fullPage">
+      <header role="banner">
+        <h1>Harry Potter Quiz</h1>
+        <h2>Would You Be Able To Defeat The Dark Lord?</h2>
+        <button type="submit" class="nextQuestion">Wands Ready!</button>
+      </header >
+      <div class="quiz" id="container">
+        <form role="form" accept-charset="UTF-8" style="display: none;">
+          <button type="submit" class="nextPage">Submit</button>  
+        </form>
+      </div>  
+      <div class="questionAnswerForm"></div>
+      <section class="resultsPage">
+        <footer style="display: none;">
+          <div class="currentQuestion">
+            <p class="footerInfo">Question: ${score} / 10</p>
+          </div>
+          <div class="currentScore">
+            <p class="footerInfo">House Points Earned: ${score}</p>
+          </div>  
+        </footer> 
+      </section>
+    </section>  
     <script
     src="https://code.jquery.com/jquery-3.4.0.min.js"
     integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="

@@ -39,14 +39,14 @@ const STORE = [
     questionNumber: 5,
     question: "Barty Crouch Jr assumes the form of Alastor Moody by using which magical spell?",
     answer1: "The Transfiguration Spell",
-    answer2: "Transoforming Powder",
+    answer2: "Transforming Powder",
     answer3: "Polyjuice Potion",
     answer4: "Beetle's Tongue Juice",
     correctAnswer: "Polyjuice Potion",
   },
   {
     questionNumber: 6,
-    question: "At the beginning of The Order of the Phoenix, Harry uses magic over the summer holiday, almost getting himself expelled. Why did he use magic?",
+    question: "In the summer before his 5th year, Harry uses magic over the summer holiday, almost getting himself expelled. Why did he use magic?",
     answer1: "To hang Dudley upside down from a tree after he made fun of Harry",
     answer2: "To send Cho Chang a romantic gift",
     answer3: "To do the dishes because he was too lazy",
@@ -90,5 +90,3 @@ const STORE = [
     correctAnswer: "He was gay",
   },            
 ];
-
-//console.log(STORE[2].answer1);
