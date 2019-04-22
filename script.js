@@ -16,7 +16,7 @@ function generateQuestion() {
   iterateQuestion();
   iterateScore();
   $('.results').hide();
-  return `<section class="questionPage" role="main">
+  return `<section class="questionPage" role="Question Page">
     <h2 class="question">${STORE[questionNumber-1].question}</h2>
       <form role="form" accept-charset="UTF-8">
         <fieldset>
@@ -98,7 +98,7 @@ function correctAnswerFeedback() {
   $('#container').hide();
   $('footer').show();
   $('.questionAnswerForm').html(`<div role="banner" class="results">
-    <iframe src="https://giphy.com/embed/DxUiFqLgDVC00" width="480" height="330" frameBorder="0" class="giphy" allowFullScreen></iframe>
+    <iframe src="https://giphy.com/embed/DxUiFqLgDVC00" width="480" height="330" frameBorder="0" class="giphy" alt="10 Points For Gryffindor" allowFullScreen></iframe>
     <button type="submit" class="nextQuestion">Next Question</button>
     </div>`);
   if (questionNumber <= STORE.length) {  
@@ -117,7 +117,7 @@ function incorrectAnswerFeedback() {
   $('footer').show();
   $('.questionAnswerForm').html(`<div role="banner" class="results">
     <h2>Nope, The Correct Answer Is ${STORE[questionNumber-2].correctAnswer}!</h2>
-    <iframe src="https://giphy.com/embed/mqSiZYc0KxyYo" width="480" height="195" frameBorder="0" class="giphy" allowFullScreen></iframe>
+    <iframe src="https://giphy.com/embed/mqSiZYc0KxyYo" width="480" height="195" frameBorder="0" class="giphy" alt="McGonnagal says Sorry Potter" allowFullScreen></iframe>
     <button type="submit" class="nextQuestion">Next Question</button>
     </div>`);
   if (questionNumber <= STORE.length) {  
@@ -140,14 +140,14 @@ function generateResults() {
   if (score >= 8) {
     return $('.resultsPage').html(`<header role="banner">
         <h1>You Are The Chosen One!</h1>
-        <p><iframe src="https://giphy.com/embed/gbErpwcLlizvi" width="480" height="247" frameBorder="0" class="giphy" allowFullScreen></iframe></p>
+        <p><iframe src="https://giphy.com/embed/gbErpwcLlizvi" width="480" height="247" frameBorder="0" class="giphy" alt="Hogwarts Celebration" allowFullScreen></iframe></p>
         <h2>You Got ${score} Out Of 10 Correct</h2>
         <button type="submit" class="restartQuiz">Restart Quiz</button>
       </header >`);
   }
   else {
       return $('.resultsPage').html(`<header role="banner"><h1>The Dark Lord Has Defeated You!</h1>
-      <p><iframe src="https://giphy.com/embed/JAbAmpu1TshlS" width="480" height="198" frameBorder="0" class="giphy" allowFullScreen></iframe></p>
+      <p><iframe src="https://giphy.com/embed/JAbAmpu1TshlS" width="480" height="198" frameBorder="0" class="giphy" alt="Voldemort Avada Kedavra" allowFullScreen></iframe></p>
       <h2>You Got ${score} Out Of 10 Correct</h2>
       <button type="submit" class="restartQuiz">Restart Quiz</button>
       </header >`);
