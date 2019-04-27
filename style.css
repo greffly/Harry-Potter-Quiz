@@ -16,6 +16,7 @@ html {
 header {
   margin-top: 10%;
   margin-bottom: 10%;
+  padding: 20% 0;
 }
 
 h1 {
@@ -97,6 +98,8 @@ button {
   font-size: .7em;
   margin: 10px;
   border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
 footer {
