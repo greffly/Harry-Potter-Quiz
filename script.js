@@ -133,7 +133,8 @@ function iterateQuestion() {
 }
 
 function iterateScore() {
-  $('.currentScore').html(`<p>House Points Earned: ${score}</p>`);
+  let houseScore = score * 10;
+  $('.currentScore').html(`<p>House Points Earned: ${houseScore}</p>`);
 }
 
 function generateResults() {
