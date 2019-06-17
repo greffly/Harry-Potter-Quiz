@@ -140,14 +140,14 @@ function iterateScore() {
 function generateResults() {
   if (score >= 8) {
     return $('.resultsPage').html(`<header role="banner">
-        <h1>You Are The Chosen One!</h1>
+        <h1 class="resultsHeader">You Are The Chosen One!</h1>
         <p><iframe src="https://giphy.com/embed/gbErpwcLlizvi" width="480" height="247" frameBorder="0" class="giphy" alt="Hogwarts Celebration" allowFullScreen></iframe></p>
         <h2>You Got ${score} Out Of 10 Correct</h2>
         <button type="submit" class="restartQuiz">Restart Quiz</button>
       </header >`);
   }
   else {
-      return $('.resultsPage').html(`<header role="banner"><h1>The Dark Lord Has Defeated You!</h1>
+      return $('.resultsPage').html(`<header role="banner"><h1 class="resultsHeader">The Dark Lord Has Defeated You!</h1>
       <p><iframe src="https://giphy.com/embed/JAbAmpu1TshlS" width="480" height="198" frameBorder="0" class="giphy" alt="Voldemort Avada Kedavra" allowFullScreen></iframe></p>
       <h2>You Got ${score} Out Of 10 Correct</h2>
       <button type="submit" class="restartQuiz">Restart Quiz</button>

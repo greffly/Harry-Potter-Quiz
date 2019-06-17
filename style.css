@@ -90,6 +90,10 @@ iframe.giphy {
   height: auto;
 }
 
+.resultsHeader {
+  margin-top: 0;
+}
+
 button {
   width: 40%;
   padding: 10px;
@@ -105,9 +109,10 @@ button {
 footer {
   display: flex;
   flex-direction: column;
-  //text-align: center;
+  text-align: center;
   justify-content: space-evenly;
   width: 100%;
+  background-color: rgba(99, 97, 97, 0.8);
 }
 
 @media screen and (min-width: 331px) {
