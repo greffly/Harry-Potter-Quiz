@@ -17,35 +17,43 @@ function generateQuestion() {
   iterateScore();
   $('.results').hide();
   return `<section class="questionPage" role="Question Page">
-    <h2 class="question">${STORE[questionNumber-1].question}</h2>
+    <h2 class="question">${STORE[questionNumber - 1].question}</h2>
       <form role="form" accept-charset="UTF-8">
         <fieldset>
           <label>
-            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer1}"/>
-            ${STORE[questionNumber-1].answer1}<br>
+            <input type="radio" class="answer" name="option" value="${
+              STORE[questionNumber - 1].answer1
+            }"/>
+            ${STORE[questionNumber - 1].answer1}<br>
           </label>
           <label>
-            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer2}"/>
-            ${STORE[questionNumber-1].answer2}<br>
+            <input type="radio" class="answer" name="option" value="${
+              STORE[questionNumber - 1].answer2
+            }"/>
+            ${STORE[questionNumber - 1].answer2}<br>
           </label>
           <label>
-            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer3}"/> 
-            ${STORE[questionNumber-1].answer3}<br>
-          </label>  
+            <input type="radio" class="answer" name="option" value="${
+              STORE[questionNumber - 1].answer3
+            }"/>
+            ${STORE[questionNumber - 1].answer3}<br>
+          </label>
           <label>
-            <input type="radio" class="answer" name="option" value="${STORE[questionNumber-1].answer4}"/> 
-            ${STORE[questionNumber-1].answer4}<br>
-          </label> 
+            <input type="radio" class="answer" name="option" value="${
+              STORE[questionNumber - 1].answer4
+            }"/>
+            ${STORE[questionNumber - 1].answer4}<br>
+          </label>
         </fieldset>
       </form>
       <button type="submit" class="getResults">Submit</button>
       </section>
     `;
-  console.log('generateQuestion is working');  
+  console.log('generateQuestion is working');
 }
 
 function renderQuestion() {
-  console.log("renderQuestion question number", questionNumber);
+  console.log('renderQuestion question number', questionNumber);
   $('#container').html(generateQuestion());
   $('header').hide();
   $('form').show();
@@ -55,14 +63,13 @@ function renderQuestion() {
 
 function handleNextQuestion() {
   $('.nextQuestion').on('click', function() {
-    if (questionNumber <= STORE.length) {  
+    if (questionNumber <= STORE.length) {
       renderQuestion();
-      questionNumber++;  
-    }
-    else {
+      questionNumber++;
+    } else {
       renderResults();
-    }  
-  console.log('handleNextQuestion is working');
+    }
+    console.log('handleNextQuestion is working');
   });
 }
 
@@ -77,17 +84,16 @@ function handleAnswerSubmitted() {
 function checkUserAnswer() {
   event.preventDefault();
   //Need to fix this so there's no -2 value
-  let correctAnswer = `${STORE[questionNumber-2].correctAnswer}`;
-  let userAnswer = $("input:checked").val();
+  let correctAnswer = `${STORE[questionNumber - 2].correctAnswer}`;
+  let userAnswer = $('input:checked').val();
 
   if (userAnswer == correctAnswer) {
-    console.log("checkUserAnswer score", score);
+    console.log('checkUserAnswer score', score);
     correctAnswerFeedback();
-  }
-  else {
+  } else {
     console.log('incorrectAnswer selected');
     incorrectAnswerFeedback();
-  }  
+  }
 }
 
 function correctAnswerFeedback() {
@@ -101,12 +107,11 @@ function correctAnswerFeedback() {
     <iframe src="https://giphy.com/embed/DxUiFqLgDVC00" width="480" height="330" frameBorder="0" class="giphy" alt="10 Points For Gryffindor" allowFullScreen></iframe>
     <button type="submit" class="nextQuestion">Next Question</button>
     </div>`);
-  if (questionNumber <= STORE.length) {  
-    handleNextQuestion(); 
-  }
-  else {
+  if (questionNumber <= STORE.length) {
+    handleNextQuestion();
+  } else {
     renderResults();
-  }    
+  }
 }
 
 function incorrectAnswerFeedback() {
@@ -116,16 +121,17 @@ function incorrectAnswerFeedback() {
   $('#container').hide();
   $('footer').show();
   $('.questionAnswerForm').html(`<div role="banner" class="results">
-    <h2>Nope, The Correct Answer Is ${STORE[questionNumber-2].correctAnswer}!</h2>
+    <h2>Nope, The Correct Answer Is ${
+      STORE[questionNumber - 2].correctAnswer
+    }!</h2>
     <iframe src="https://giphy.com/embed/mqSiZYc0KxyYo" width="480" height="195" frameBorder="0" class="giphy" alt="McGonnagal says Sorry Potter" allowFullScreen></iframe>
     <button type="submit" class="nextQuestion">Next Question</button>
     </div>`);
-  if (questionNumber <= STORE.length) {  
-    handleNextQuestion(); 
-  }
-  else {
+  if (questionNumber <= STORE.length) {
+    handleNextQuestion();
+  } else {
     renderResults();
-  } 
+  }
 }
 
 function iterateQuestion() {
@@ -145,19 +151,19 @@ function generateResults() {
         <h2>You Got ${score} Out Of 10 Correct</h2>
         <button type="submit" class="restartQuiz">Restart Quiz</button>
       </header >`);
-  }
-  else {
-      return $('.resultsPage').html(`<header role="banner"><h1 class="resultsHeader">The Dark Lord Has Defeated You!</h1>
+  } else {
+    return $('.resultsPage')
+      .html(`<header role="banner"><h1 class="resultsHeader">The Dark Lord Has Defeated You!</h1>
       <p><iframe src="https://giphy.com/embed/JAbAmpu1TshlS" width="480" height="198" frameBorder="0" class="giphy" alt="Voldemort Avada Kedavra" allowFullScreen></iframe></p>
       <h2>You Got ${score} Out Of 10 Correct</h2>
       <button type="submit" class="restartQuiz">Restart Quiz</button>
       </header >`);
-  }  
+  }
 }
 
 function renderResults() {
   $('.nextQuestion').on('click', function() {
-    $('.results').hide(); 
+    $('.results').hide();
     generateResults();
     console.log('renderResults is working');
     restartQuiz();
@@ -166,8 +172,8 @@ function renderResults() {
 
 function restartQuiz() {
   $('.restartQuiz').on('click', function() {
-  location.reload();
-  console.log('restartQuiz is working');
+    location.reload();
+    console.log('restartQuiz is working');
   });
 }
 

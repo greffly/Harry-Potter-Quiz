@@ -1,17 +1,18 @@
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 html {
-  background: url("https://i.pinimg.com/originals/58/4c/19/584c19801a64c5f5f198b6c441d0cf7e.jpg") center center;
+  background: url('https://i.pinimg.com/originals/58/4c/19/584c19801a64c5f5f198b6c441d0cf7e.jpg')
+    center center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
   width: 100%;
   align-content: center;
-  font-family: "Crimson Text", Helvetica Neue;
+  font-family: 'Crimson Text', Helvetica Neue;
   font-size: 18px;
-}	
+}
 
 header {
   margin-top: 10%;
@@ -26,7 +27,7 @@ h1 {
 h2 {
   font-size: 1.2em;
 }
-		
+
 body {
   color: white;
   text-align: center;
@@ -57,7 +58,8 @@ body {
   justify-content: space-evenly;
 }
 
-fieldset, .questionPage {
+fieldset,
+.questionPage {
   padding: 10px;
   border: none;
 }
@@ -73,7 +75,9 @@ fieldset, .questionPage {
   margin: 10px;
 }
 
-.questionAnswerForm, .results, .resultsPage {
+.questionAnswerForm,
+.results,
+.resultsPage {
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -99,7 +103,7 @@ button {
   padding: 10px;
   align-content: center;
   background-color: white;
-  font-size: .7em;
+  font-size: 0.7em;
   margin: 10px;
   border-radius: 5px;
   border: none;
@@ -116,14 +120,14 @@ footer {
 }
 
 @media screen and (min-width: 331px) {
-
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 600px) {
   html {
     font-size: 30px;
   }
-  .questionPage, .questionAnswerForm {
+  .questionPage,
+  .questionAnswerForm {
     padding: 20px;
   }
   button {
@@ -131,7 +135,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 600px) and (orientation: landscape){
+@media screen and (min-width: 600px) and (orientation: landscape) {
   html {
     font-size: 20px;
   }
@@ -147,7 +151,8 @@ footer {
   button {
     margin: 10px;
   }
-  h1, h2 {
+  h1,
+  h2 {
     margin: 20px;
   }
   .questionAnswerForm {
@@ -158,7 +163,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 800px) {
   html {
     font-size: 27px;
     height: 100%;
@@ -166,7 +171,8 @@ footer {
   .fullPage {
     height: 100%;
   }
-  .questionPage, .questionAnswerForm {
+  .questionPage,
+  .questionAnswerForm {
     padding: 30px;
   }
 }
